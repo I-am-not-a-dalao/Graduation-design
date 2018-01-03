@@ -1,0 +1,21 @@
+{
+	"index.html": {
+		"refer": [
+			"index.html",
+			"html.html"
+		]
+	},
+	"html/Layout/UserLayout.html": {
+		"resources": [
+			"html/main/chat-list.html"
+		],
+		"refer": [
+			"html/main/chat-list.html",
+			"html/main/dynamic-list.html",
+			"html/main/friend-list.html",
+			"html/Layer/menu.html",
+			"html/Layer/function-menu.html",
+			"html/Layer/left-menu.html"
+		]
+	}
+}

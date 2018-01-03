@@ -1,0 +1,9 @@
+.mh-chat-header{border-radius: 50%;}
+.mh-chat-time{font-style: normal;float: right;color: #ccc;}
+.mh-chat-user-nikename{color:#333;}
+.mh-chat-message-preview{padding-right: 30px;}
+.mh-chat-badge{position: absolute;right: 0px;bottom: 0;}
+.mui-badge.mui-badge-cyan{color: #fff;background-color: #96d7f0;}
+
+
+.mh-chat-function{position: absolute;right: 15px;top: 15px;}

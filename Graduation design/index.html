@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link href="css/mui.min.css" type="text/css" rel="stylesheet" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/animate.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/login/mh-login.css" media="all"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	mui.plusReady(function () { 
+			plus.screen.lockOrientation("portrait-primary");
+		});
+		
+    </script>
+</head>
+<body>
+	<div class="mh-login-main">
+		<div style="height: 150px;"><h1 class="mh-login-title"><span class="mui-icon mui-icon-weixin"></span> 跑 步</h1></div>
+		<p class="mh-login-text">I'M QQ<br/>每一天<br/>乐在沟通</p>
+		<div class="mh-login-bottom-button-group">
+			<button class="mh-login-bottom-button mh-login-button-login" type="button">登录</button>
+			<button class="mh-login-bottom-button mh-login-button-reg" type="button">新用户</button>
+		</div>
+		<form id="mh-login-login-form" class="mui-input-group mh-login-login-form" style="display: none;" action="" method="post">
+			<div class="mui-input-row">
+			    <input type="text" class="mui-input-clear mh-login-login-form-input" placeholder="普通输入框">
+			</div>
+			<div class="mui-input-row">
+			    <input type="password" class="mui-input-clear mh-login-login-form-input" placeholder="密码">
+			</div>
+			<input type="submit" class="mui-btn mh-login-login-form-login" value="登 录" />
+			<a id="mh-login-forget">忘记密码？</a>
+			<a id="mh-login-register">新用户注册</a>
+		</form>
+		
+		
+		
+		
+	</div>
+	<script type="text/javascript">
+		$(".mh-login-bottom-button.mh-login-button-login").click(function(){
+			$("#mh-login-login-form").fadeIn(500);
+			$(".mh-login-title").addClass("mh-login-title-animate");
+			$(this).parent().fadeOut(500);
+		});
+		$("#mh-login-forget").click(function(){
+			mui.openWindow({
+				url:"html.html",
+				id:"html.html"
+			});
+		});
+	</script>
+</body>
+</html>

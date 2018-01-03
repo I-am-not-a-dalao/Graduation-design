@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link href="../../css/mui.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/Layout/mh-layout.css" />
+<link rel="stylesheet" href="../../css/iconfont.css" />
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+	<img id="user-header" class="mh-layout-user-header" src="../../imgs/login-bg.png" alt="" />
+	<a id="menu" class="mui-icon mui-icon-plusempty mui-pull-right"></a>
+	<h1 class="mui-title"></h1>
+</header>
+<nav class="mui-bar mui-bar-tab">
+    <a class="mui-tab-item mui-active" href="../main/chat-list.html">
+        <span class="iconfont icon-message" style="font-size: 28px;margin-top: 7px;display: block;"></span>
+        <span class="mui-tab-label" style="font-size: 10px;">消息</span>
+    </a>
+    <a class="mui-tab-item" href="../main/friend-list.html">
+        <span class="iconfont icon-zhongxing" style="font-size: 28px;margin-top: 7px;display: block;"></span>
+        <span class="mui-tab-label" style="font-size: 10px;">联系人</span>
+    </a>
+    <a class="mui-tab-item" href="../main/dynamic-list.html">
+        <span class="iconfont icon-dujia" style="font-size: 28px;margin-top: 7px;display: block;font-weight: bold;"></span>
+        <span class="mui-tab-label" style="font-size: 10px;">动态</span>
+    </a>
+</nav>
+<!--
+	固定栏靠前
+	所谓的固定栏，也就是带有.mui-bar属性的节点，都是基于fixed定位的元素；
+	常见组件包括：顶部导航栏（.mui-bar-nav）、底部工具条(.mui-bar-footer)、底部选项卡（.mui-bar-tab）;
+	这些元素使用时需遵循一个规则：放在.mui-content元素之前，即使是底部工具条和底部选项卡，也要放在.mui-content之前，否则固定栏会遮住部分主内容；
+-->
+
+<script src="../../js/mui.min.js"></script>
+<script type="text/javascript">
+	mui.init();
+	var subpages = ["../main/chat-list.html","../main/friend-list.html","../main/dynamic-list.html"];
+	var subpageStyle = {top:"45px", bottom:"52px"};
+	var title = document.querySelector(".mui-title");
+	var floatw = null;
+	mui.plusReady(function(){
+		
+   		var self = plus.webview.currentWebview();   //创建子窗体
+   		for(var i = 0;i<subpages.length;i++){
+      		var sub = plus.webview.create(subpages[i],subpages[i],subpageStyle); //当前Webview的URL地址、ID、样式。功能：创建子窗体
+      		sub.hide();        //功能：隐藏页面
+      		self.append(sub);      //功能： 追加子页面,首个选项卡页面显示，其它均隐藏
+   		}
+   		plus.webview.show(subpages[0]);  //设置主页的sub.html默认显示出来，其他sub2.html默认隐藏
+   		title.innerHTML = "消息";
+   		
+        floatw = plus.webview.create("../Layer/function-menu.html", "menu", {
+            background: 'transparent',
+            zindex: 10,
+        });
+        
+	});
+ 
+	 mui(".mui-bar-tab").on("tap","a",function(e){ //通过.mui-bar-tap里的a元素绑定tap事件，达到批量绑定的效果
+	   var tagPage = this.getAttribute("href");//getAttribute()获取属性函数
+	   title.innerHTML = this.querySelector(".mui-tab-label").innerHTML;
+	   plus.webview.show(tagPage);
+	 });
+	
+	document.getElementById('menu').addEventListener('tap', function() {
+        if(floatw) { // 避免快速多次点击创建多个窗口
+                floatw.show("fade-in");
+            } else {
+                floatw = plus.webview.create("../Layer/function-menu.html", "menu", {
+                    background: 'transparent',
+                    zindex: 10,
+                });
+                floatw.show("fade-in");
+            }
+    })
+	
+	
+</script>
+</body>
+
+</html>
